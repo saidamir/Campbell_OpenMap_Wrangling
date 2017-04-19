@@ -1,0 +1,44 @@
+SELECT DISTINCT(nodes_tags.value), COUNT(*) as num
+FROM nodes_tags
+LEFT JOIN ways_tags on nodes_tags.value = ways_tags.value 
+WHERE nodes_tags.key='amenity'
+GROUP BY nodes_tags.value
+ORDER BY num DESC;
+
+SELECT value, COUNT(*) as num
+FROM ways_tags
+WHERE key='amenity'
+GROUP BY value
+ORDER BY num DESC;
+
+SELECT DISTINCT(nodes_tags.id), nodes_tags.value, COUNT(*) as num
+FROM nodes_tags
+LEFT JOIN ways_tags on nodes_tags.value = ways_tags.value 
+WHERE nodes_tags.key='amenity'
+GROUP BY nodes_tags.id
+ORDER BY num DESC
+LIMIT 10
+
+SELECT DISTINCT(a.value), COUNT(*) as num
+FROM (SELECT * FROM nodes_tags UNION ALL SELECT * FROM ways_tags) a 
+WHERE key='amenity'
+GROUP BY a.value
+ORDER BY num DESC
+LIMIT 20
+
+SELECT DISTINCT(a.value), COUNT(*) as num
+FROM (SELECT * FROM nodes_tags UNION ALL SELECT * FROM ways_tags) a 
+WHERE key='cuisine'
+GROUP BY a.value
+ORDER BY num ASC
+LIMIT 20;
+
+SELECT type, COUNT(*) as num
+FROM nodes_tags
+GROUP BY type
+ORDER BY num DESC;
+
+SELECT type, COUNT(*), COUNT(*)/SUM(count(*)) as perc
+FROM ways_tags
+GROUP BY type
+ORDER BY num DESC;
