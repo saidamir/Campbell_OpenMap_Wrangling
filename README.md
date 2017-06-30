@@ -1,4 +1,5 @@
 ### Campbell_OpenMap_Wrangling
+Pdf file: https://github.com/saidamir/Campbell_OpenMap_Wrangling/blob/master/P3_OpenStreetMap_CaseStudy-041717.pdf
 Data wrangling project of OpenMap data of Campbell, CA, downloaded from [https://mapzen.com/]
 
 Please read the codes and results in `P3_OpenStreetMap_CaseStudy-041717.ipynb`
